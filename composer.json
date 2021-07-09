@@ -28,5 +28,8 @@
                 "ViteFacade": "Samuelmwangiw\\LaravelVite\\ViteFacade"
             }
         }
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.9"
     }
 }

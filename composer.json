@@ -1,0 +1,31 @@
+{
+    "name": "samuelmwangiw/laravel-vite",
+    "description": "A tiny package that adds @vite_assets blade directive and loads Vite assets",
+    "authors": [
+        {
+            "role": "Developer",
+            "name": "Samuel Mwangi",
+            "email": "samuel@samuelmwangi.co.ke",
+            "homepage": "https://github.com/SamuelMwangiW/"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Samuelmwangiw\\LaravelVite\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelVite\\ViteServiceProvider"
+            ],
+            "aliases": {
+                "ViteFacade": "LaravelVite\\ViteFacade"
+            }
+        }
+    }
+}

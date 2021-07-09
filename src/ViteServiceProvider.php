@@ -3,8 +3,9 @@
 namespace Samuelmwangiw\LaravelVite;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
-class ViteServiceProvider
+class ViteServiceProvider extends ServiceProvider
 {
     public function boot()
     {

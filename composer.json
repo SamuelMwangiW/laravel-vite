@@ -18,13 +18,14 @@
             "Samuelmwangiw\\LaravelVite\\": "src/"
         }
     },
+    "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelVite\\ViteServiceProvider"
+                "Samuelmwangiw\\LaravelVite\\ViteServiceProvider"
             ],
             "aliases": {
-                "ViteFacade": "LaravelVite\\ViteFacade"
+                "ViteFacade": "Samuelmwangiw\\LaravelVite\\ViteFacade"
             }
         }
     }

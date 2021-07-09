@@ -2,7 +2,6 @@
 
 namespace Samuelmwangiw\LaravelVite;
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
 use JetBrains\PhpStorm\Pure;
@@ -20,7 +19,7 @@ class Vite
 
     static function devServerIsRunning(): bool
     {
-        if (App::environment(environments: 'local')) {
+        if (app()->environment( 'local')) {
             try {
                 Http::get(url: self::getDevHost());
                 return true;
@@ -66,7 +65,7 @@ class Vite
         }
 
         return str_replace(
-            search: self::public_path(),
+            search: public_path(),
             replace: '',
             subject: $glob[0]
         );
@@ -76,13 +75,8 @@ class Vite
     {
         $asset = str_replace(search: '.', replace: '.*.',subject: $asset);
         return glob(
-            pattern: self::public_path(path: "build/assets/{$asset}")
+            pattern: public_path("build/assets/{$asset}")
         );
-    }
-
-    protected static function public_path(string $path = ''): string
-    {
-        return App::make('path.public').($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);;
     }
 
 }

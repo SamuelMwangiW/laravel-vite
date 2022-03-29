@@ -2,7 +2,7 @@
 
 namespace SamuelMwangiW\Vite;
 
-use SamuelMwangiW\Vite\Commands\ViteCommand;
+use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -10,16 +10,15 @@ class ViteServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('laravel-vite')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-vite_table')
-            ->hasCommand(ViteCommand::class);
+            ->hasConfigFile();
+    }
+
+    public function bootingPackage()
+    {
+        Blade::directive('vite_assets', function () {
+            return Vite::assets();
+        });
     }
 }

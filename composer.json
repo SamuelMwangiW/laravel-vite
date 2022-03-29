@@ -34,8 +34,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SamuelMwangiW\\Vite\\": "src",
-            "SamuelMwangiW\\Vite\\Database\\Factories\\": "database/factories"
+            "SamuelMwangiW\\Vite\\": "src"
         }
     },
     "autoload-dev": {
@@ -59,10 +58,7 @@
         "laravel": {
             "providers": [
                 "SamuelMwangiW\\Vite\\ViteServiceProvider"
-            ],
-            "aliases": {
-                "Vite": "SamuelMwangiW\\Vite\\Facades\\Vite"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",

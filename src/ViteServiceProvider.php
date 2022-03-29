@@ -17,8 +17,6 @@ class ViteServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
-        Blade::directive('vite_assets', function () {
-            return Vite::assets();
-        });
+        Blade::directive('vite_assets', fn() => $this->app->make(Vite::class)->assets());
     }
 }

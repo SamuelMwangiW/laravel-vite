@@ -4,7 +4,8 @@
     "keywords": [
         "SamuelMwangiW",
         "laravel",
-        "laravel-vite"
+        "laravel-vite",
+        "vite"
     ],
     "homepage": "https://github.com/samuelmwangiw/laravel-vite",
     "license": "MIT",

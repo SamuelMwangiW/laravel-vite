@@ -1,4 +1,4 @@
-# laravel-vite
+# laravel-vite (WIP)
 A tiny package that adds @vite_assets blade directive and loads Vite assets.
 
 Note to use this package, you need to manually convert your application to be ready to run vite. If running a Laravel-application, kindly follow the steps below:
@@ -11,4 +11,5 @@ Note to use this package, you need to manually convert your application to be re
 6. Update resolveComponent in app.js accordingly
 
 
+# Acknowledgements
 Kindly see [Sebastian's blog](https://sebastiandedeyne.com/vite-with-laravel/) for a professionally writen step-by-step process

@@ -7,21 +7,21 @@ use Illuminate\Support\HtmlString;
 
 class Vite
 {
-    public static function assets(): HtmlString
+    public function assets(): HtmlString
     {
-        if (self::devServerIsRunning()) {
-            return self::devScripts();
+        if ($this->devServerIsRunning()) {
+            return $this->devScripts();
         }
 
-        return self::productionScripts();
+        return $this->productionScripts();
     }
 
-    public static function devServerIsRunning(): bool
+    public function devServerIsRunning(): bool
     {
         if (app()->environment('local')) {
             try {
                 Http::timeout(seconds: 1)
-                    ->get(url: self::getDevHost());
+                    ->get(url: $this->getDevHost());
 
                 return true;
             } catch (\Exception) {
@@ -32,12 +32,12 @@ class Vite
         return false;
     }
 
-    public static function getDevHost(): string
+    public function getDevHost(): string
     {
         return config('vite.vite_host');
     }
 
-    public static function devScripts(): HtmlString
+    public function devScripts(): HtmlString
     {
         return new HtmlString(
             html: <<<HTML
@@ -47,19 +47,19 @@ class Vite
         );
     }
 
-    public static function productionScripts(): HtmlString
+    public function productionScripts(): HtmlString
     {
-        $css = self::assetPath(asset: 'app.css');
-        $js = self::assetPath(asset: 'app.js');
+        $css = $this->assetPath(asset: 'app.css');
+        $js = $this->assetPath(asset: 'app.js');
 
         return new HtmlString(
             html:"<link rel='stylesheet' href='{$css}'><script type='module' src='{$js}'></script>"
         );
     }
 
-    public static function assetPath(string $asset): string
+    public function assetPath(string $asset): string
     {
-        $glob = self::glob(asset: $asset);
+        $glob = $this->glob(asset: $asset);
 
         if ($glob === false || sizeof(value: $glob) !== 1) {
             return '';
@@ -72,7 +72,7 @@ class Vite
         );
     }
 
-    protected static function glob(string $asset): array|false
+    protected function glob(string $asset): array|false
     {
         $asset = str_replace(search: '.', replace: '.*.', subject: $asset);
 

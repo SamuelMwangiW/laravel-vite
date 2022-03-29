@@ -2,9 +2,9 @@
 
 namespace SamuelMwangiW\Vite;
 
+use SamuelMwangiW\Vite\Commands\ViteCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use SamuelMwangiW\Vite\Commands\ViteCommand;
 
 class ViteServiceProvider extends PackageServiceProvider
 {

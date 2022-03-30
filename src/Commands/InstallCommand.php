@@ -22,6 +22,7 @@ class InstallCommand extends Command
         }
 
         $this->copyStubs();
+        $this->flushNodeModules();
 
         $this->info(string: 'Setup Done. ');
         $this->comment(string: 'Run `npm install && npm run dev`');
@@ -49,15 +50,17 @@ class InstallCommand extends Command
     }
 
     /**
-     * Replace a given string within a given file.
+     * Delete the "node_modules" directory and remove the associated lock files.
      *
-     * @param string $search
-     * @param string $replace
-     * @param string $path
      * @return void
      */
-    protected function replaceInFile(string $search, string $replace, string $path): void
+    protected static function flushNodeModules(): void
     {
-        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+        tap(new Filesystem, function ($files) {
+            $files->deleteDirectory(base_path('node_modules'));
+
+            $files->delete(base_path('yarn.lock'));
+            $files->delete(base_path('package-lock.json'));
+        });
     }
 }

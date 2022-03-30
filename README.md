@@ -66,6 +66,31 @@ module.exports = {
 }
 ```
 
+```js
+// vite.config.js
+
+import vue from '@vitejs/plugin-vue';
+import path from 'path'
+
+export default ({ command }) => ({
+    base: command === 'serve' ? '' : '/build/',
+    publicDir: false,
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+        rollupOptions: {
+            input: 'resources/js/app.js',
+        },
+    },
+    resolve:{
+        alias:{
+            '@' : path.resolve(__dirname, 'resources/js')
+        },
+    },
+    plugins: [vue()],
+});
+```
+
 ### File Extensions
 Current versions of Breeze and Jetstream have added .vue extensions to imports therefore you can skip this section if you are adding the package to a new application.
 

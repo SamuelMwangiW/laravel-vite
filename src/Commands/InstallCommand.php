@@ -4,6 +4,7 @@ namespace SamuelMwangiW\Vite\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 
 class InstallCommand extends Command
 {
@@ -14,7 +15,7 @@ class InstallCommand extends Command
     public function handle(): int
     {
         if (
-            ! $this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
+            !$this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
         ) {
             $this->comment(string: 'Phew... That was close!');
 
@@ -23,6 +24,7 @@ class InstallCommand extends Command
 
         $this->copyStubs();
         $this->flushNodeModules();
+        $this->flushWebpackFiles();
 
         $this->info(string: 'Setup Done. ');
         $this->comment(string: 'Run `npm install && npm run dev`');
@@ -41,7 +43,7 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
 
-        if (! file_exists(base_path('tailwind.config.js'))) {
+        if (!file_exists(base_path('tailwind.config.js'))) {
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
 
@@ -64,5 +66,14 @@ class InstallCommand extends Command
             $files->delete(base_path('yarn.lock'));
             $files->delete(base_path('package-lock.json'));
         });
+    }
+
+    protected function flushWebpackFiles(): void
+    {
+        File::delete([
+            base_path('webpack.mix.js'),
+            base_path('webpack.config.js'),
+            public_path('mix-manifest.json'),
+        ]);
     }
 }

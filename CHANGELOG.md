@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## v1.2.0 - 2022-03-30
+
+## What's Changed
+
+- Update README by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/2
+- Fix vite:install not publishing the stub app.blade.php by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/3
+- Patch delete webpack files by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/4
+
+## New Contributors
+
+- @SamuelMwangiW made their first contribution in https://github.com/SamuelMwangiW/laravel-vite/pull/2
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.1.0...1.2.0
+
 ## v1.1.0 - 2022-03-30
 
 Added `vite:install` command

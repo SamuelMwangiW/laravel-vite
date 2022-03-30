@@ -305,6 +305,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Samuel Mwangi](https://github.com/SamuelMwangiW)
+- [Sebastian De Deyne](https://sebastiandedeyne.com/vite-with-laravel/) whose blog inspired this package
 - [All Contributors](../../contributors)
 
 ## License

@@ -12,12 +12,9 @@ This improves the developer experience by using the blazing fast Vite HMR instea
 
 ## Installation
 
-You can install the package via composer:
+You can install the package either to a new project or to an existing Laravel project as follows:
 
-```bash
-composer require samuelmwangiw/laravel-vite
-```
-## New Project
+### New Project
 
 The easiest way to get started is to create a new Laravel project.
 
@@ -34,6 +31,10 @@ The easiest way to get started is to create a new Laravel project.
    composer require laravel/breeze --dev
    php artisan breeze:install vue
    ```
+ - Then install this package via composer:
+ ```bash
+composer require samuelmwangiw/laravel-vite
+```
  - Run `vite:install` command to setup vite
 ```shell
 php artisan vite:install
@@ -42,17 +43,19 @@ php artisan vite:install
  - Build your amazing project
 
 ### Existing Project
-First remove `laravel-mix` and `webpack` related packages from your project.
+First install the package from composer:
+```bash
+composer require samuelmwangiw/laravel-vite
+```
+
+Then remove `laravel-mix` and `webpack` related packages from your project.
 
 ```bash
 npm remove laravel-mix postcss-import vue-loader
 npm i -D vite @vitejs/plugin-vue
 ```
-Setup Tailwindcss as necessary:
-```bash
-npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
-```
-To use Tailwindcss with vite, you also need to ensure that you publish the config files to your project by running `npx tailwind init -p`. 
+
+If using Tailwindcss, you will need to ensure that you publish the config files to your project by running `npx tailwind init -p`. 
 
 See below sample config files:
 
@@ -91,6 +94,7 @@ module.exports = {
     },
 }
 ```
+Add the vite config file to the root of your project:
 
 ```js
 // vite.config.js
@@ -118,7 +122,7 @@ export default ({ command }) => ({
 ```
 
 ### File Extensions
-Current versions of Breeze and Jetstream have added .vue extensions to imports therefore you can skip this section if you are adding the package to a new application.
+Current versions of Breeze and Jetstream have added .vue extensions to imports therefore you can skip this section if you've followed the same guideline across your application.
 
 You need to ensure you application code includes .vue file extension for all imports.
 
@@ -129,7 +133,7 @@ You need to ensure you application code includes .vue file extension for all imp
 
 ### require() to import
 
-To use vite, you need to switch require() statements to import.
+You need to switch require() statements to import.
 
 ```diff
  // resources/js/app.js
@@ -202,7 +206,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 ```
 
-Finally, update the scripts section in your `package.json` by replacing mix with vite:
+Finally, update the script section in your `package.json` by replacing mix with vite:
 
 ```diff
     "scripts": {
@@ -223,7 +227,7 @@ Finally, update the scripts section in your `package.json` by replacing mix with
 Note that I have `npm run vite` because vite by default is only available on localhost hence not reachable from a docker container but you skip this option if does not apply to you.
 
 ## Usage
-Add `@vite_assets` to your blade template and delete the following:
+Add `@vite_assets` to your blade template and delete the styles import as we are already importing the styles in the js entry file `app.js`.
 
 ```diff
 <!DOCTYPE html>

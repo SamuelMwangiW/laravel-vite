@@ -14,7 +14,7 @@ class InstallCommand extends Command
     public function handle(): int
     {
         if (
-            !$this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
+            ! $this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
         ) {
             $this->comment(string: 'Phew... That was close!');
 
@@ -34,16 +34,16 @@ class InstallCommand extends Command
      */
     public function copyStubs(): void
     {
-        (new Filesystem)->ensureDirectoryExists(resource_path('js'));
+        (new Filesystem())->ensureDirectoryExists(resource_path('js'));
 
         copy(__DIR__ . '/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
 
-        if (!file_exists(base_path('tailwind.config.js'))) {
+        if (! file_exists(base_path('tailwind.config.js'))) {
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
 
-        copy(from: __DIR__ . '/../../stubs/entry.app.js',to: resource_path('js/app.js'));
+        copy(from: __DIR__ . '/../../stubs/entry.app.js', to: resource_path('js/app.js'));
         copy(__DIR__ . '/../../stubs/entry.bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/../../stubs/package.json', base_path('package.json'));
     }

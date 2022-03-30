@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## v1.2.1 - 2022-03-30
+
+## What's Changed
+
+- Check if Running Laravel Sail to set vite.vite_host by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/5
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.2.0...1.2.1
+
 ## v1.2.0 - 2022-03-30
 
 ## What's Changed

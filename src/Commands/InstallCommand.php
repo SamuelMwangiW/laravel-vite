@@ -4,6 +4,7 @@ namespace SamuelMwangiW\Vite\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 
 class InstallCommand extends Command
 {
@@ -23,6 +24,7 @@ class InstallCommand extends Command
 
         $this->copyStubs();
         $this->flushNodeModules();
+        $this->flushWebpackFiles();
 
         $this->info(string: 'Setup Done. ');
         $this->comment(string: 'Run `npm install && npm run dev`');
@@ -64,5 +66,14 @@ class InstallCommand extends Command
             $files->delete(base_path('yarn.lock'));
             $files->delete(base_path('package-lock.json'));
         });
+    }
+
+    protected function flushWebpackFiles(): void
+    {
+        File::delete([
+            base_path('webpack.mix.js'),
+            base_path('webpack.config.js'),
+            public_path('mix-manifest.json'),
+        ]);
     }
 }

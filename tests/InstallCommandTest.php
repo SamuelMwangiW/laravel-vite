@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\File;
+use function PHPUnit\Framework\assertFileDoesNotExist;
 use function PHPUnit\Framework\assertFileExists;
 
 it(description: 'runs console command vite:install')
@@ -27,4 +29,19 @@ it('publishes assets', function () {
     assertFileExists(base_path('postcss.config.js'));
     assertFileExists(base_path('tailwind.config.js'));
     assertFileExists(base_path('vite.config.js'));
+});
+
+
+it('deletes webpack and laravel-mix assets', function () {
+    File::put(base_path('webpack.mix.js'), '//dummy content');
+    File::put(base_path('webpack.config.js'), '//dummy content');
+    File::put(public_path('mix-manifest.json'), '//dummy content');
+
+    $this->artisan('vite:install')
+        ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')
+        ->assertSuccessful();
+
+    assertFileDoesNotExist(base_path('webpack.mix.js'));
+    assertFileDoesNotExist(base_path('webpack.config.js'));
+    assertFileDoesNotExist(public_path('mix-manifest.json'));
 });

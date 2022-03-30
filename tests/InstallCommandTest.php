@@ -1,6 +1,6 @@
 <?php
 
-use function \PHPUnit\Framework\assertFileExists;
+use function PHPUnit\Framework\assertFileExists;
 
 it(description: 'runs console command vite:install')
     ->artisan('vite:install')

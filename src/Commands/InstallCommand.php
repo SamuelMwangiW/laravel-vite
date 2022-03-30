@@ -56,7 +56,7 @@ class InstallCommand extends Command
      */
     protected static function flushNodeModules(): void
     {
-        tap(new Filesystem, function ($files) {
+        tap(new Filesystem(), function ($files) {
             $files->deleteDirectory(base_path('node_modules'));
 
             $files->delete(base_path('yarn.lock'));

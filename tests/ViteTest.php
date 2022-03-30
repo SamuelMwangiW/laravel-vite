@@ -4,7 +4,6 @@ use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use SamuelMwangiW\Vite\Tests\DummyRequest;
 use SamuelMwangiW\Vite\Vite;
@@ -20,13 +19,13 @@ it('can get the vite host')
 
 it('only checks if dev server is running in a local environment', function () {
     Http::fake();
-    app()->detectEnvironment(fn() => 'production');
+    app()->detectEnvironment(fn () => 'production');
 
     expect(app()->make(Vite::class))
         ->devServerIsRunning()
         ->toBeFalse();
 
-    app()->detectEnvironment(fn() => 'testing');
+    app()->detectEnvironment(fn () => 'testing');
 
     expect(app()->make(Vite::class))
         ->devServerIsRunning()
@@ -36,7 +35,7 @@ it('only checks if dev server is running in a local environment', function () {
         return $request->url() === 'https://vite.example.com:3000/';
     });
 
-    app()->detectEnvironment(fn() => 'local');
+    app()->detectEnvironment(fn () => 'local');
 
     expect(app()->make(Vite::class))
         ->devServerIsRunning()
@@ -55,7 +54,7 @@ it('returns false when the dev server is unreachable', function () {
         );
     });
 
-    app()->detectEnvironment(fn() => 'local');
+    app()->detectEnvironment(fn () => 'local');
 
     expect(app()->make(Vite::class))
         ->devServerIsRunning()
@@ -63,7 +62,7 @@ it('returns false when the dev server is unreachable', function () {
 });
 
 it('returns dev scripts when the dev server is running', function () {
-    app()->detectEnvironment(fn() => 'local');
+    app()->detectEnvironment(fn () => 'local');
     Http::fake();
 
     $devScript = new HtmlString(
@@ -76,7 +75,7 @@ it('returns dev scripts when the dev server is running', function () {
 });
 
 it('returns prod scripts when the dev server is unreachable', function () {
-    app()->detectEnvironment(fn() => 'local');
+    app()->detectEnvironment(fn () => 'local');
 
     Http::fake(function ($request) {
         throw new ConnectException(

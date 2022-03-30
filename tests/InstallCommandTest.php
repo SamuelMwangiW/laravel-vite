@@ -33,9 +33,9 @@ it('publishes assets', function () {
 
 
 it('deletes webpack and laravel-mix assets', function () {
-    File::put(base_path('webpack.mix.js'),'//dummy content');
-    File::put(base_path('webpack.config.js'),'//dummy content');
-    File::put(public_path('mix-manifest.json'),'//dummy content');
+    File::put(base_path('webpack.mix.js'), '//dummy content');
+    File::put(base_path('webpack.config.js'), '//dummy content');
+    File::put(public_path('mix-manifest.json'), '//dummy content');
 
     $this->artisan('vite:install')
         ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')

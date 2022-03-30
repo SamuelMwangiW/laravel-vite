@@ -15,7 +15,7 @@ class InstallCommand extends Command
     public function handle(): int
     {
         if (
-            !$this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
+            ! $this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
         ) {
             $this->comment(string: 'Phew... That was close!');
 
@@ -43,7 +43,7 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
 
-        if (!file_exists(base_path('tailwind.config.js'))) {
+        if (! file_exists(base_path('tailwind.config.js'))) {
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
 

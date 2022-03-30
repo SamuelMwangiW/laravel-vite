@@ -17,12 +17,38 @@ You can install the package via composer:
 ```bash
 composer require samuelmwangiw/laravel-vite
 ```
+## New Project
+
+The easiest way to get started is to create a new Laravel project.
+
+ - Create a new project and run the following command: `laravel new awesome-project`
+ - Setup [Jetstream](https://jetstream.laravel.com/2.x/installation.html#or-install-jetstream-with-inertia) with Inertia 
+ ```shell
+   cd awesome-project
+   composer require laravel/jetstream
+   php artisan jetstream:install inertia
+   ```
+ - or [Breeze](https://laravel.com/docs/9.x/starter-kits#laravel-breeze) with Vue
+```shell
+   cd awesome-project
+   composer require laravel/breeze --dev
+   php artisan breeze:install vue
+   ```
+ - Run `vite:install` command to setup vite
+```shell
+php artisan vite:install
+```
+ - Run `npm install` to install the dependencies and `npm run dev` to start the development server
+ - Build your amazing project
+
+### Existing Project
+First remove `laravel-mix` and `webpack` related packages from your project.
 
 ```bash
 npm remove laravel-mix postcss-import vue-loader
 npm i -D vite @vitejs/plugin-vue
 ```
-### Tailwind CSS
+Setup Tailwindcss as necessary:
 ```bash
 npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 ```

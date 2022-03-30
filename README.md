@@ -85,7 +85,7 @@ To use vite, you need to switch require() statements to import.
  
 -require('./bootstrap');
 +import './bootstrap';
-
++import '../css/app.css'
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
@@ -96,10 +96,10 @@ createInertiaApp({
     title: (title) => `${title} - ${appName}`,
 -    resolve: (name) => require(`./Pages/${name}.vue`),
 +    resolve: async (name) => {
-        const pages = import.meta.glob('./Pages/**/*.vue');
-
-        return (await pages[`./Pages/${name}.vue`]()).default;
-    },
++        const pages = import.meta.glob('./Pages/**/*.vue');
++
++        return (await pages[`./Pages/${name}.vue`]()).default;
++    },
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
             .use(plugin)

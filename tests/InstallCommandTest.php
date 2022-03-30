@@ -1,5 +1,7 @@
 <?php
 
+use function \PHPUnit\Framework\assertFileExists;
+
 it(description: 'runs console command vite:install')
     ->artisan('vite:install')
     ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'no')
@@ -12,3 +14,17 @@ it(description: 'runs the installation')
     ->expectsOutput('Setup Done. ')
     ->expectsOutput('Run `npm install && npm run dev`')
     ->assertSuccessful();
+
+it('publishes assets', function () {
+    $this->artisan('vite:install')
+        ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')
+        ->assertSuccessful();
+
+    assertFileExists(resource_path('views/app.blade.php'));
+    assertFileExists(resource_path('js/app.js'));
+    assertFileExists(resource_path('js/bootstrap.js'));
+    assertFileExists(base_path('package.json'));
+    assertFileExists(base_path('postcss.config.js'));
+    assertFileExists(base_path('tailwind.config.js'));
+    assertFileExists(base_path('vite.config.js'));
+});

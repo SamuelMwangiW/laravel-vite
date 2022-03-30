@@ -2,6 +2,7 @@
 
 namespace SamuelMwangiW\Vite;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
 
@@ -40,10 +41,7 @@ class Vite
     public function devScripts(): HtmlString
     {
         return new HtmlString(
-            html: <<<HTML
-            <script type="module" src="http://localhost:3000/@vite/client"></script>
-            <script type="module" src="http://localhost:3000/resources/js/app.js"></script>
-        HTML
+            html: '<script type="module" src="http://localhost:3000/@vite/client"></script><script type="module" src="http://localhost:3000/resources/js/app.js"></script>'
         );
     }
 
@@ -53,7 +51,7 @@ class Vite
         $js = $this->assetPath(asset: 'app.js');
 
         return new HtmlString(
-            html:"<link rel='stylesheet' href='{$css}'><script type='module' src='{$js}'></script>"
+            html: "<link rel='stylesheet' href='{$css}'><script type='module' src='{$js}'></script>"
         );
     }
 
@@ -76,7 +74,7 @@ class Vite
     {
         $asset = str_replace(search: '.', replace: '.*.', subject: $asset);
 
-        return glob(
+        return File::glob(
             pattern: public_path("build/assets/{$asset}")
         );
     }

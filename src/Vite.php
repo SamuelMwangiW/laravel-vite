@@ -38,14 +38,14 @@ class Vite
         return config('vite.vite_host');
     }
 
-    public function devScripts(): HtmlString
+    protected function devScripts(): HtmlString
     {
         return new HtmlString(
             html: '<script type="module" src="http://localhost:3000/@vite/client"></script><script type="module" src="http://localhost:3000/resources/js/app.js"></script>'
         );
     }
 
-    public function productionScripts(): HtmlString
+    protected function productionScripts(): HtmlString
     {
         $css = $this->assetPath(asset: 'app.css');
         $js = $this->assetPath(asset: 'app.js');
@@ -55,7 +55,7 @@ class Vite
         );
     }
 
-    public function assetPath(string $asset): string
+    protected function assetPath(string $asset): string
     {
         $glob = $this->glob(asset: $asset);
 

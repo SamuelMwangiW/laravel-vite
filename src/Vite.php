@@ -17,7 +17,7 @@ class Vite
         return $this->productionScripts();
     }
 
-    protected function devServerIsRunning(): bool
+    public function devServerIsRunning(): bool
     {
         if (app()->environment('local')) {
             try {
@@ -33,7 +33,7 @@ class Vite
         return false;
     }
 
-    protected function getDevHost(): string
+    public function getDevHost(): string
     {
         return config('vite.vite_host');
     }

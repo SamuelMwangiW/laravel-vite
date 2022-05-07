@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.2.3 - 2022-05-07
+
+## What's Changed
+
+- Bump axios from 0.26.1 to 0.27.2 in /stubs by @dependabot in https://github.com/SamuelMwangiW/laravel-vite/pull/10
+- remove @vue/compiler-sfc by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/11
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.2.2...1.2.3
+
 ## v1.2.2 - 2022-04-24
 
 ## What's Changed

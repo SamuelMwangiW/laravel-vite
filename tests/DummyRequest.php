@@ -49,49 +49,49 @@ class DummyRequest implements RequestInterface
         return $this;
     }
 
-    public function withAddedHeader($name, $value)
+    public function withAddedHeader($name, $value): DummyRequest|static
     {
         return $this;
     }
 
-    public function withoutHeader($name)
+    public function withoutHeader($name): DummyRequest|static
     {
         return $this;
     }
 
-    public function getBody()
+    public function getBody(): StreamInterface
     {
         return $this->body;
     }
 
-    public function withBody(StreamInterface $body)
+    public function withBody(StreamInterface $body): DummyRequest|static
     {
         $this->body = $body;
 
         return $this;
     }
 
-    public function getRequestTarget()
+    public function getRequestTarget(): string
     {
         return '-';
     }
 
-    public function withRequestTarget($requestTarget)
+    public function withRequestTarget($requestTarget): DummyRequest|static
     {
         return $this;
     }
 
-    public function getMethod()
+    public function getMethod(): string
     {
         return 'GET';
     }
 
-    public function withMethod($method)
+    public function withMethod($method): DummyRequest|static
     {
         return $this;
     }
 
-    public function getUri()
+    public function getUri(): UriInterface
     {
         return Uri::fromParts([]);
     }

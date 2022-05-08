@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+use function Pest\Laravel\artisan;
 use function PHPUnit\Framework\assertFileDoesNotExist;
 use function PHPUnit\Framework\assertFileExists;
 
@@ -18,7 +19,7 @@ it(description: 'runs the installation')
     ->assertSuccessful();
 
 it('publishes assets', function () {
-    $this->artisan('vite:install')
+    artisan('vite:install')
         ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')
         ->assertSuccessful();
 
@@ -38,8 +39,10 @@ it('deletes webpack and laravel-mix assets', function () {
     File::put(public_path('mix-manifest.json'), '//dummy content');
 
     $this->artisan('vite:install')
-        ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')
-        ->assertSuccessful();
+        ->expectsConfirmation(
+            question: 'This action will overwrite some files and cannot be undone. Are you sure?',
+            answer: 'yes'
+        )->assertSuccessful();
 
     assertFileDoesNotExist(base_path('webpack.mix.js'));
     assertFileDoesNotExist(base_path('webpack.config.js'));

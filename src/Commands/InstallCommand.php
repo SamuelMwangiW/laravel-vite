@@ -5,6 +5,7 @@ namespace SamuelMwangiW\Vite\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class InstallCommand extends Command
 {
@@ -23,6 +24,7 @@ class InstallCommand extends Command
         }
 
         $this->copyStubs();
+//        $this->installServiceProviderAfter('RouteServiceProvider','ViteServiceProvider');
         $this->flushNodeModules();
         $this->flushWebpackFiles();
 
@@ -95,5 +97,16 @@ class InstallCommand extends Command
     protected function replaceInFile($search, $replace, $path)
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+    }
+
+    protected function installServiceProviderAfter($after, $name)
+    {
+        if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
+            (new Filesystem())->put(config_path('app.php'), str_replace(
+                'App\\Providers\\'.$after.'::class,',
+                'App\\Providers\\'.$after.'::class,'.PHP_EOL.'        App\\Providers\\'.$name.'::class,',
+                $appConfig
+            ));
+        }
     }
 }

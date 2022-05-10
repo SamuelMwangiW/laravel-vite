@@ -2,7 +2,6 @@
 
 namespace SamuelMwangiW\Vite\Tests;
 
-use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase as Orchestra;
 use SamuelMwangiW\Vite\VitePackageServiceProvider;
 

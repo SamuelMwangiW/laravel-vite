@@ -24,7 +24,7 @@ class InstallCommand extends Command
         }
 
         $this->copyStubs();
-        $this->installServiceProviderAfter('RouteServiceProvider','ViteServiceProvider');
+        $this->installServiceProviderAfter('RouteServiceProvider', 'ViteServiceProvider');
         $this->flushNodeModules();
         $this->flushWebpackFiles();
 

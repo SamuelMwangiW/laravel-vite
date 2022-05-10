@@ -39,12 +39,12 @@ composer require --dev samuelmwangiw/laravel-vite
 php artisan vite:install
 ```
  - Run `npm install` to install the dependencies and `npm run dev` to start the development server
- - Build your amazing project
- - Since the package publishes all assets to your `App` namespace during setup, it's safe to remove the package from your dependencies
+ - (Optional) Since the package publishes all assets to your `App` namespace during setup, it's safe to remove the package from your dependencies
 
 ```bash
 composer remove --dev samuelmwangiw/laravel-vite
 ```
+ - Build your amazing project
 
 ## Laravel Sail
 

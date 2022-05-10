@@ -31,6 +31,7 @@ it('publishes assets', function () {
     assertFileExists(base_path('tailwind.config.js'));
     assertFileExists(base_path('vite.config.js'));
     assertFileExists(app_path('Utils/Vite.php'));
+    assertFileExists(app_path('Providers/ViteServiceProvider.php'));
 });
 
 

@@ -48,6 +48,13 @@ class InstallCommand extends Command
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
 
+        if (! file_exists(app_path('Providers/ViteServiceProvider.php'))) {
+            copy(
+                from: __DIR__ . '/../../stubs/app/Providers/ViteServiceProver.stub',
+                to: app_path('Providers/ViteServiceProvider.php')
+            );
+        }
+
         copy(from: __DIR__ . '/../../stubs/resources/js/app.js', to: resource_path('js/app.js'));
         copy(__DIR__ . '/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));

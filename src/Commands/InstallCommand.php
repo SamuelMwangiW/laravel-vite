@@ -65,7 +65,7 @@ class InstallCommand extends Command
 
         $this->replaceInFile(
             search: 'namespace SamuelMwangiW\\Vite;',
-            replace: 'namespace App\\Utils\\Vite;',
+            replace: 'namespace App\\Utils;',
             path: app_path('Utils/Vite.php')
         );
     }

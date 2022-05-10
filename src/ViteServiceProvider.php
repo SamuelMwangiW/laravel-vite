@@ -2,7 +2,6 @@
 
 namespace SamuelMwangiW\Vite;
 
-use Illuminate\Support\Facades\Blade;
 use SamuelMwangiW\Vite\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;

@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.3.1 - 2022-05-10
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.3.0...1.3.1
+
 ## 1.3 - 2022-05-10
 
 ## What's Changed

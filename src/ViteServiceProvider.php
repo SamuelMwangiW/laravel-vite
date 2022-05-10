@@ -6,7 +6,7 @@ use SamuelMwangiW\Vite\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class BaseViteServiceProvider extends PackageServiceProvider
+class ViteServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

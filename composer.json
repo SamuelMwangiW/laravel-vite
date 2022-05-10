@@ -60,7 +60,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SamuelMwangiW\\Vite\\BaseViteServiceProvider"
+                "SamuelMwangiW\\Vite\\ViteServiceProvider"
             ]
         }
     },

@@ -3,7 +3,7 @@
 namespace SamuelMwangiW\Vite\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use SamuelMwangiW\Vite\BaseViteServiceProvider;
+use SamuelMwangiW\Vite\ViteServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -15,7 +15,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            BaseViteServiceProvider::class,
+            ViteServiceProvider::class,
         ];
     }
 

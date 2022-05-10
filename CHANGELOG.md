@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.3.2 - 2022-05-10
+
+- Publish config during setup b6822228960ce879e5d117ed123d39f5376726cc
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.3.1...1.3.2
+
 ## 1.3.1 - 2022-05-10
 
 **Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.3.0...1.3.1

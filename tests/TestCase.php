@@ -3,19 +3,32 @@
 namespace SamuelMwangiW\Vite\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use SamuelMwangiW\Vite\ViteServiceProvider;
+use SamuelMwangiW\Vite\VitePackageServiceProvider;
 
 class TestCase extends Orchestra
 {
+    private string $appConfig = '';
+
     protected function setUp(): void
     {
         parent::setUp();
+        $this->appConfig = file_get_contents(config_path('app.php'));
+    }
+
+    protected function tearDown(): void
+    {
+        file_put_contents(
+            config_path('app.php'),
+            $this->appConfig,
+        );
+
+        parent::tearDown();
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            ViteServiceProvider::class,
+            VitePackageServiceProvider::class,
         ];
     }
 

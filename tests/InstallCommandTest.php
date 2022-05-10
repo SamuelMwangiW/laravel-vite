@@ -30,18 +30,6 @@ it('publishes assets', function () {
     assertFileExists(base_path('postcss.config.js'));
     assertFileExists(base_path('tailwind.config.js'));
     assertFileExists(base_path('vite.config.js'));
-    assertFileExists(app_path('Utils/Vite.php'));
-    assertFileExists(app_path('Providers/ViteServiceProvider.php'));
-});
-
-it('registers ViteServiceProvider to config', function () {
-    artisan('vite:install')
-        ->expectsConfirmation('This action will overwrite some files and cannot be undone. Are you sure?', 'yes')
-        ->assertSuccessful();
-
-    $config = file_get_contents(config_path('app.php'));
-
-    expect($config)->toContain('App\\Providers\\ViteServiceProvider::class,');
 });
 
 

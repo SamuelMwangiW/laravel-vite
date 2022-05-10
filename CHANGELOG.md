@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.3 - 2022-05-10
+
+## What's Changed
+
+- Publish assets by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/12
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.2.3...1.3
+
 ## 1.2.3 - 2022-05-07
 
 ## What's Changed

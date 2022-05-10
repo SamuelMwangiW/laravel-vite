@@ -42,6 +42,10 @@ php artisan vite:install
  - Build your amazing project
  - Since the package publishes all assets to your `App` namespace during setup, it's safe to remove the package from your dependencies
 
+```bash
+composer remove --dev samuelmwangiw/laravel-vite
+```
+
 ## Laravel Sail
 
 If running [Sail](https://laravel.com/docs/9.x/sail) for local development, this package provides a handy `sail` npm script that runs `vite --host` under the hood as `vite` is only accessible via the loopback interface (127.0.0.1) by default and would therefore not be accessible in the docker container.

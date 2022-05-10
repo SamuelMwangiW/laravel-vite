@@ -33,7 +33,7 @@ The easiest way to get started is to create a new Laravel project.
    ```
  - Then install this package via composer:
  ```bash
-composer require samuelmwangiw/laravel-vite
+composer require --dev samuelmwangiw/laravel-vite
 ```
  - Run `vite:install` command to setup vite
 ```shell
@@ -41,6 +41,7 @@ php artisan vite:install
 ```
  - Run `npm install` to install the dependencies and `npm run dev` to start the development server
  - Build your amazing project
+ - Since samuelmwangiw/laravel-vite publishes all assets to your `App` namespace, it should be safe to remove the package from your dependencies
 
 ### Existing Project
 First install the package from composer:

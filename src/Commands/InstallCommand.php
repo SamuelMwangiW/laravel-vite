@@ -115,6 +115,6 @@ class InstallCommand extends Command
 
     protected function publishConfig()
     {
-        $this->call(VendorPublishCommand::class,['--provider' => ViteServiceProvider::class]);
+        $this->call(VendorPublishCommand::class, ['--provider' => ViteServiceProvider::class]);
     }
 }

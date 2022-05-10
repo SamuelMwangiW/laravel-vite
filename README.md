@@ -6,13 +6,13 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/samuelmwangiw/laravel-vite/Check%20&%20fix%20styling?label=code%20style)](https://github.com/samuelmwangiw/laravel-vite/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/samuelmwangiw/laravel-vite.svg?style=flat-square)](https://packagist.org/packages/samuelmwangiw/laravel-vite)
 
-A tiny package that adds @vite_assets blade directive and loads Vite assets.
+A tiny package that swaps out Webpack (Laravel-Mix) for Vite in you Laravel project.
 
-This improves the developer experience by using the blazing fast Vite HMR instead of webpack compilation offered in Laravel Mix
+This improves the developer experience by using the blazing fast Vite HMR instead of webpack compilation offered by Webpack through Laravel Mix
 
 ## Installation
 
-The easiest way to get started is to create a new Laravel project.
+The easiest way to get started is on a new Laravel project.
 
  - Create a new project and run the following command: 
  ```shell
@@ -40,7 +40,7 @@ php artisan vite:install
 ```
  - Run `npm install` to install the dependencies and `npm run dev` to start the development server
  - Build your amazing project
- - Since samuelmwangiw/laravel-vite publishes all assets to your `App` namespace, it should be safe to remove the package from your dependencies
+ - Since the package publishes all assets to your `App` namespace during setup, it's safe to remove the package from your dependencies
 
 ## Laravel Sail
 

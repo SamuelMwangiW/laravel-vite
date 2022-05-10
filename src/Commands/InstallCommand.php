@@ -5,6 +5,7 @@ namespace SamuelMwangiW\Vite\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class InstallCommand extends Command
 {
@@ -39,6 +40,7 @@ class InstallCommand extends Command
     {
         (new Filesystem())->ensureDirectoryExists(resource_path('js'));
         (new Filesystem())->ensureDirectoryExists(resource_path('views'));
+        (new Filesystem())->ensureDirectoryExists(app_path('Utils'));
 
         copy(__DIR__ . '/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
@@ -51,6 +53,13 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
         copy(__DIR__ . '/../../stubs/package.json', base_path('package.json'));
+        copy(__DIR__ . '/../Vite.php', app_path('Utils/Vite.php'));
+
+        $this->replaceInFile(
+            search: 'namespace SamuelMwangiW\\Vite;',
+            replace: 'namespace App\\Utils\\Vite;',
+            path: app_path('Utils/Vite.php')
+        );
     }
 
     /**
@@ -75,5 +84,10 @@ class InstallCommand extends Command
             base_path('webpack.config.js'),
             public_path('mix-manifest.json'),
         ]);
+    }
+
+    protected function replaceInFile($search, $replace, $path)
+    {
+        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }
 }

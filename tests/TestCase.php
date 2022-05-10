@@ -2,6 +2,7 @@
 
 namespace SamuelMwangiW\Vite\Tests;
 
+use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase as Orchestra;
 use SamuelMwangiW\Vite\ViteServiceProvider;
 
@@ -10,6 +11,8 @@ class TestCase extends Orchestra
     protected function setUp(): void
     {
         parent::setUp();
+
+        Storage::fake();
     }
 
     protected function getPackageProviders($app)

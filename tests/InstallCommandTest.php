@@ -32,6 +32,7 @@ it('publishes assets', function () {
     assertFileExists(base_path('vite.config.js'));
     assertFileExists(app_path('Utils/Vite.php'));
     assertFileExists(app_path('Providers/ViteServiceProvider.php'));
+    assertFileExists(config_path('vite.php'));
 });
 
 

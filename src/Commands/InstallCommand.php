@@ -4,8 +4,10 @@ namespace SamuelMwangiW\Vite\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Console\VendorPublishCommand;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use SamuelMwangiW\Vite\ViteServiceProvider;
 
 class InstallCommand extends Command
 {
@@ -27,6 +29,7 @@ class InstallCommand extends Command
         $this->installServiceProviderAfter('RouteServiceProvider', 'ViteServiceProvider');
         $this->flushNodeModules();
         $this->flushWebpackFiles();
+        $this->publishConfig();
 
         $this->info(string: 'Setup Done. ');
         $this->comment(string: 'Run `npm install && npm run dev`');
@@ -94,12 +97,12 @@ class InstallCommand extends Command
         ]);
     }
 
-    protected function replaceInFile($search, $replace, $path)
+    protected function replaceInFile($search, $replace, $path): void
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }
 
-    protected function installServiceProviderAfter($after, $name)
+    protected function installServiceProviderAfter($after, $name): void
     {
         if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
             (new Filesystem())->put(config_path('app.php'), str_replace(
@@ -108,5 +111,10 @@ class InstallCommand extends Command
                 $appConfig
             ));
         }
+    }
+
+    protected function publishConfig()
+    {
+        $this->call(VendorPublishCommand::class,['--provider' => ViteServiceProvider::class]);
     }
 }

@@ -8,11 +8,22 @@ use SamuelMwangiW\Vite\VitePackageServiceProvider;
 
 class TestCase extends Orchestra
 {
+    private string $appConfig = '';
+
     protected function setUp(): void
     {
         parent::setUp();
+        $this->appConfig = file_get_contents(config_path('app.php'));
+    }
 
-        Storage::fake();
+    protected function tearDown(): void
+    {
+        file_put_contents(
+            config_path('app.php'),
+            $this->appConfig,
+        );
+
+        parent::tearDown();
     }
 
     protected function getPackageProviders($app)

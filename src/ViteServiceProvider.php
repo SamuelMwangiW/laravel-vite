@@ -16,9 +16,4 @@ class ViteServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasCommand(commandClassName: InstallCommand::class);
     }
-
-    public function bootingPackage()
-    {
-        Blade::directive('vite_assets', fn () => $this->app->make(Vite::class)->assets());
-    }
 }

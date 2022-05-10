@@ -5,7 +5,6 @@ namespace SamuelMwangiW\Vite\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class InstallCommand extends Command
 {

@@ -50,7 +50,7 @@ class InstallCommand extends Command
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
         if (! file_exists(app_path('Utils/Vite.php'))) {
-            (new Filesystem())->copy(__DIR__ . '/../Vite.php', app_path('Utils/Vite.php'));
+            (new Filesystem)->copy(__DIR__ . '/../Vite.php', app_path('Utils/Vite.php'));
 
             $this->replaceInFile(
                 search: 'namespace SamuelMwangiW\Vite;',
@@ -59,11 +59,11 @@ class InstallCommand extends Command
             );
         }
 
-        (new Filesystem())->copy(__DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
-        (new Filesystem())->copy(__DIR__ . '/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
-        (new Filesystem())->copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
-        (new Filesystem())->copy(__DIR__ . '/../../stubs/package.json', base_path('package.json'));
-        (new Filesystem())->copy(__DIR__ . '/../../stubs/app/Providers/ViteServiceProvider.php', app_path('Providers/ViteServiceProvider.php'));
+        (new Filesystem)->copy( __DIR__ . '/../../stubs/resources/js/app.js', resource_path('js/app.js'));
+        (new Filesystem)->copy(__DIR__ . '/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
+        (new Filesystem)->copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
+        (new Filesystem)->copy(__DIR__ . '/../../stubs/package.json', base_path('package.json'));
+        (new Filesystem)->copy(__DIR__ . '/../../stubs/app/Providers/ViteServiceProvider.php', app_path('Providers/ViteServiceProvider.php'));
     }
 
     /**

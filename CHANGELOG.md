@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.4.0 - 2022-05-15
+
+## What's Changed
+
+### Added
+
+- server.origin by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/13
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.3.2...1.4.0
+
 ## 1.3.2 - 2022-05-10
 
 - Publish config during setup b6822228960ce879e5d117ed123d39f5376726cc

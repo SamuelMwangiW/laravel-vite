@@ -16,5 +16,8 @@ export default ({ command }) => ({
             '@' : path.resolve(__dirname, 'resources/js')
         },
     },
+    server: {
+        origin: 'http://127.0.0.1:3000'
+    },
     plugins: [vue()],
 });

@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-vite` will be documented in this file.
 
+## 1.4.1 - 2022-06-07
+
+### What's Changed
+
+- Use Default bootstrap.js by @SamuelMwangiW in https://github.com/SamuelMwangiW/laravel-vite/pull/14
+
+**Full Changelog**: https://github.com/SamuelMwangiW/laravel-vite/compare/1.4.0...1.4.1
+
 ## 1.4.0 - 2022-05-15
 
 ## What's Changed

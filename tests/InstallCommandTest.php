@@ -24,8 +24,6 @@ it('publishes assets', function () {
         ->assertSuccessful();
 
     assertFileExists(resource_path('views/app.blade.php'));
-    assertFileExists(resource_path('js/app.js'));
-    assertFileExists(resource_path('js/bootstrap.js'));
     assertFileExists(base_path('package.json'));
     assertFileExists(base_path('postcss.config.js'));
     assertFileExists(base_path('tailwind.config.js'));

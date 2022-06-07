@@ -60,8 +60,6 @@ class InstallCommand extends Command
             );
         }
 
-        copy(from: __DIR__ . '/../../stubs/resources/js/app.js', to: resource_path('js/app.js'));
-        copy(__DIR__ . '/../../stubs/resources/js/bootstrap.js', resource_path('js/bootstrap.js'));
         copy(__DIR__ . '/../../stubs/resources/views/app.blade.php', resource_path('views/app.blade.php'));
         copy(__DIR__ . '/../../stubs/package.json', base_path('package.json'));
         copy(__DIR__ . '/../Vite.php', app_path('Utils/Vite.php'));

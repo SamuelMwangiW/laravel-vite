@@ -7,7 +7,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/stubs/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
 
   - package-ecosystem: "github-actions"
     directory: "/"

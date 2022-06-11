@@ -3,9 +3,8 @@
 
 version: 2
 updates:
-
   - package-ecosystem: "npm"
-    directory: "/stubs/"
+    directory: "/stubs"
     schedule:
       interval: "weekly"
 

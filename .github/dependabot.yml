@@ -7,8 +7,3 @@ updates:
     directory: "/stubs"
     schedule:
       interval: "daily"
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"

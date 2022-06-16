@@ -6,7 +6,7 @@ updates:
       interval: daily
 
   - package-ecosystem: "npm"
-    directory: "/stubs"
+    directory: "/"
     schedule:
       interval: daily
 

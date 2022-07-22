@@ -7,6 +7,7 @@ namespace SamuelMwangiW\Vite;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class Vite
 {
@@ -23,12 +24,13 @@ class Vite
     {
         if (app()->environment('local')) {
             try {
-                Http::timeout(seconds: 1)
-                    ->get(url: $this->getDevHost());
-
-                return true;
-            } catch (\Exception) {
-                return false;
+                return Http::timeout(seconds: 1)
+                    ->get(url: $this->getDevHost())
+                    ->successful();
+            } catch (\Exception $exception) {
+                return Str::of(
+                    $exception->getMessage()
+                )->contains('cURL error 52: Empty reply from server');
             }
         }
 

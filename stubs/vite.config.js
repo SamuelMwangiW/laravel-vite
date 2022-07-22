@@ -17,7 +17,7 @@ export default ({ command }) => ({
         },
     },
     server: {
-        origin: 'http://127.0.0.1:3000'
+        host: '127.0.0.1'
     },
     plugins: [vue()],
 });

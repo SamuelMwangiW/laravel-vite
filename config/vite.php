@@ -9,8 +9,11 @@ return [
      * In docker, it would be "http://host.docker.internal:3000"
      */
 
+    'port' => $vite_port = env('VITE_PORT', 5173),
     'vite_host' => env(
         key: 'VITE_URL',
-        default: env(key: 'LARAVEL_SAIL', default: false) ? 'http://host.docker.internal:3000' : 'http://localhost:3000'
+        default: env(key: 'LARAVEL_SAIL', default: false)
+            ? 'http://host.docker.internal:' . $vite_port
+            : 'http://localhost:' . $vite_port
     ),
 ];

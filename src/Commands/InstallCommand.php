@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamuelMwangiW\Vite\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\VendorPublishCommand;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use SamuelMwangiW\Vite\ViteServiceProvider;
 
 class InstallCommand extends Command
@@ -18,7 +19,7 @@ class InstallCommand extends Command
     public function handle(): int
     {
         if (
-            ! $this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
+            ! $this->confirm(question: 'This action will overwrite some files and cannot be undone. Are you sure?')
         ) {
             $this->comment(string: 'Phew... That was close!');
 
@@ -96,23 +97,31 @@ class InstallCommand extends Command
         ]);
     }
 
-    protected function replaceInFile($search, $replace, $path): void
+    protected function replaceInFile(string $search, string $replace, string $path): void
     {
-        file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+        file_put_contents(
+            filename: $path,
+            data: str_replace($search, $replace, strval(file_get_contents($path)))
+        );
     }
 
-    protected function installServiceProviderAfter($after, $name): void
+    protected function installServiceProviderAfter(string $after, string $name): void
     {
-        if (! Str::contains($appConfig = file_get_contents(config_path('app.php')), 'App\\Providers\\'.$name.'::class')) {
-            (new Filesystem())->put(config_path('app.php'), str_replace(
-                'App\\Providers\\'.$after.'::class,',
-                'App\\Providers\\'.$after.'::class,'.PHP_EOL.'        App\\Providers\\'.$name.'::class,',
-                $appConfig
-            ));
+        $appConfig = file_get_contents(config_path('app.php'));
+
+        if ($appConfig && ! str_contains($appConfig, 'App\\Providers\\' . $name . '::class')) {
+            (new Filesystem())->put(
+                config_path('app.php'),
+                str_replace(
+                    'App\\Providers\\' . $after . '::class,',
+                    'App\\Providers\\' . $after . '::class,' . PHP_EOL . '        App\\Providers\\' . $name . '::class,',
+                    strval($appConfig)
+                )
+            );
         }
     }
 
-    protected function publishConfig()
+    protected function publishConfig(): void
     {
         $this->call(VendorPublishCommand::class, ['--provider' => ViteServiceProvider::class]);
     }

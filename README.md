@@ -6,6 +6,8 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/samuelmwangiw/laravel-vite/Check%20&%20fix%20styling?label=code%20style)](https://github.com/samuelmwangiw/laravel-vite/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/samuelmwangiw/laravel-vite.svg?style=flat-square)](https://packagist.org/packages/samuelmwangiw/laravel-vite)
 
+> Since version 9.19 Laravel ships with first-party support for Vite. This package is therefore not required anymore
+
 A tiny package that swaps out Webpack (Laravel-Mix) for Vite in you Laravel project.
 
 This improves the developer experience by using the blazing fast Vite HMR instead of webpack compilation offered by Webpack through Laravel Mix

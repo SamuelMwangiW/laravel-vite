@@ -37,5 +37,6 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('vite.vite_host', 'https://vite.example.com:3000/');
+        config()->set('vite.port', 3000);
     }
 }

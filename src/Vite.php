@@ -43,7 +43,8 @@ class Vite
     protected function devScripts(): HtmlString
     {
         return new HtmlString(
-            html: '<script type="module" src="http://localhost:3000/@vite/client"></script><script type="module" src="http://localhost:3000/resources/js/app.js"></script>'
+            html: '<script type="module" src="http://localhost:' . $this->port() . '/@vite/client"></script>'
+            . '<script type="module" src="http://localhost:' . $this->port() . '/resources/js/app.js"></script>'
         );
     }
 
@@ -79,5 +80,10 @@ class Vite
         return File::glob(
             pattern: public_path("build/assets/{$asset}")
         );
+    }
+
+    private function port(): int
+    {
+        return config('vite.port');
     }
 }

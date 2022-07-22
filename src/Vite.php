@@ -35,7 +35,7 @@ class Vite
 
     public function getDevHost(): string
     {
-        return config('vite.vite_host');
+        return strval(config('vite.vite_host'));
     }
 
     protected function devScripts(): HtmlString

@@ -84,6 +84,6 @@ class Vite
 
     private function port(): int
     {
-        return config('vite.port');
+        return intval(config('vite.port'));
     }
 }

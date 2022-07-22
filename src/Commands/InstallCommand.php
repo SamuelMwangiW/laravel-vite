@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamuelMwangiW\Vite\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Console\VendorPublishCommand;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use SamuelMwangiW\Vite\ViteServiceProvider;
 
 class InstallCommand extends Command
@@ -18,7 +19,7 @@ class InstallCommand extends Command
     public function handle(): int
     {
         if (
-            !$this->confirm(question: "This action will overwrite some files and cannot be undone. Are you sure?")
+            ! $this->confirm(question: 'This action will overwrite some files and cannot be undone. Are you sure?')
         ) {
             $this->comment(string: 'Phew... That was close!');
 
@@ -49,11 +50,11 @@ class InstallCommand extends Command
         copy(__DIR__ . '/../../stubs/vite.config.js', base_path('vite.config.js'));
         copy(__DIR__ . '/../../stubs/postcss.config.js', base_path('postcss.config.js'));
 
-        if (!file_exists(base_path('tailwind.config.js'))) {
+        if (! file_exists(base_path('tailwind.config.js'))) {
             copy(__DIR__ . '/../../stubs/tailwind.config.js', base_path('tailwind.config.js'));
         }
 
-        if (!file_exists(app_path('Providers/ViteServiceProvider.php'))) {
+        if (! file_exists(app_path('Providers/ViteServiceProvider.php'))) {
             copy(
                 from: __DIR__ . '/../../stubs/app/Providers/ViteServiceProver.stub',
                 to: app_path('Providers/ViteServiceProvider.php')
@@ -108,7 +109,7 @@ class InstallCommand extends Command
     {
         $appConfig = file_get_contents(config_path('app.php'));
 
-        if ($appConfig && !str_contains($appConfig, 'App\\Providers\\' . $name . '::class')) {
+        if ($appConfig && ! str_contains($appConfig, 'App\\Providers\\' . $name . '::class')) {
             (new Filesystem())->put(
                 config_path('app.php'),
                 str_replace(

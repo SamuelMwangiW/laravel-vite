@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamuelMwangiW\Vite;
 
 use Illuminate\Support\Facades\File;

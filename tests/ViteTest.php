@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Client\Request;
@@ -84,7 +86,7 @@ it('returns prod scripts when the dev server is unreachable', function () {
         );
     });
 
-    $response = new HtmlString("<link rel='stylesheet' href=''><script type='module' src=''></script>");
+    $response = new HtmlString('<link rel=\'stylesheet\' href=\'\'><script type=\'module\' src=\'\'></script>');
 
     expect(app()->make(Vite::class))
         ->assets()

@@ -7,6 +7,7 @@ namespace SamuelMwangiW\Vite;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 
 class Vite
 {
@@ -23,12 +24,13 @@ class Vite
     {
         if (app()->environment('local')) {
             try {
-                Http::timeout(seconds: 1)
-                    ->get(url: $this->getDevHost());
-
-                return true;
-            } catch (\Exception) {
-                return false;
+                return Http::timeout(seconds: 1)
+                    ->get(url: $this->getDevHost())
+                    ->successful();
+            } catch (\Exception $exception) {
+                return Str::of(
+                    $exception->getMessage()
+                )->contains('cURL error 52: Empty reply from server');
             }
         }
 
@@ -43,7 +45,8 @@ class Vite
     protected function devScripts(): HtmlString
     {
         return new HtmlString(
-            html: '<script type="module" src="http://localhost:3000/@vite/client"></script><script type="module" src="http://localhost:3000/resources/js/app.js"></script>'
+            html: '<script type="module" src="http://localhost:' . $this->port() . '/@vite/client"></script>'
+            . '<script type="module" src="http://localhost:' . $this->port() . '/resources/js/app.js"></script>'
         );
     }
 
@@ -79,5 +82,10 @@ class Vite
         return File::glob(
             pattern: public_path("build/assets/{$asset}")
         );
+    }
+
+    private function port(): int
+    {
+        return intval(config('vite.port'));
     }
 }
